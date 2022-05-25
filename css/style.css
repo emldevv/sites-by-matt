@@ -1,12 +1,10 @@
-/* Below is the first step, this is going to allow you to edit your elements a lot easier, and should be the first thing you do on every project*/
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* Custom Properties - update these for your own design.
-Bellow is the adjusting of font families (ff), and should also be one of the first things you do in every project. It doesn't have to be "primary" and "secondary", it can be the actual font family name, such as sans-serif or monospace. You will notice that we are creating a variable (fw-reg) and assigning a value to it (300). This is NOT variable and assignment, rather, it is called "Custom Properties"*/
+/* Custom Properties, update these for your own design */
 
 :root {
     --ff-primary: 'Source Sans Pro', sans-serif;
@@ -28,13 +26,9 @@ Bellow is the adjusting of font families (ff), and should also be one of the fir
           0.125em 0.125em 0.25em rgba(0,0,0,.15);
 }
 
-/*Why go to all of the trouble of setting up a css-based custom properties section when you can do it on frameworks. One of the major advantages is that you can change the properties within a media query, which is not something you can do with other frameworks. Below, =instead of needing to painstakingly go through our CSS and redefine each component. Thanks to what we have done in the media query below, everything will adjust when required*/
-
-/*This media query is a generic one, but it works well for this site*/
-
 @media (min-width: 800px) {
     :root {
-        --fs-h1: 4.5rem;    /* Font will now auto change to larger size for larger screens*/
+        --fs-h1: 4.5rem;
         --fs-h2: 3.75rem;
         --fs-h3: 1.5rem;
         --fs-body: 1.125rem;
@@ -43,9 +37,11 @@ Bellow is the adjusting of font families (ff), and should also be one of the fir
 
 /* General styles */
 
-html {
-    scroll-behavior: smooth; /*Scrolls instead of jumping when clicked*/
-}
+/* endable this to add smooth scrolling */
+/* html {
+    scroll-behavior: smooth;
+} */
+
 
 body {
     background: var(--clr-light);
@@ -67,8 +63,7 @@ img {
 
 strong { font-weight: var(--fw-bold) }
 
-/*This is for a user who tabs onto a link or button, it transforms and makes it noticeable*/
-:focus {        
+:focus {
     outline: 3px solid var(--clr-accent);
     outline-offset: 3px;
 }
@@ -81,16 +76,15 @@ strong { font-weight: var(--fw-bold) }
     background: var(--clr-accent);
     color: var(--clr-dark);
     text-decoration: none;
-    /* This cursor code is important to differentiate when the cursor hovers over a button instead of a link */
-    cursor: pointer;        
+    cursor: pointer;
     font-size: .8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: var(--fw-bold);
-    transition: transfrom 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
 }
 
-.btn:hover{
+.btn:hover {
     transform: scale(1.1);
 }
 
@@ -141,17 +135,17 @@ h3 { font-size: var(--fs-h3) }
 
 /* header */
 
-header{
+header {
     display: flex;
     justify-content: space-between;
     padding: 1em;
 }
 
 .logo {
-    max-width: 150px;
+    max-width: 100px;
 }
 
-.nav{
+.nav {
     position: fixed;
     background: var(--clr-dark);
     color: var(--clr-light);
@@ -160,12 +154,12 @@ header{
     left: 0;
     right: 0;
     z-index: 100;
-/* Below is the transition code for using the nav button*/
+    
     transform: translateX(100%);
     transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
 }
 
-.nav__list{
+.nav__list {
     list-style: none;
     display: flex;
     height: 100%;
@@ -219,11 +213,15 @@ header{
 }
 
 
+
+
+
+
 .hamburger {
     display: block;
     position: relative;
 }
-/*Above is the first button in the hamburger nav, to create the rest we require pseudo-element: */
+
 .hamburger,
 .hamburger::before,
 .hamburger::after {
@@ -291,13 +289,15 @@ header{
     }
 }
 
+
+
 /*  My services section  */
 
 .my-services {
     background-color: var(--clr-dark);
     background-image: url(../img/services-bg.jpg);
     background-size: cover;
-    /*background-blend-mode: multiply;*/ /*Can play around with the colour depending on how you want you text to stand out. I've commented out the darkening of the background*/
+    /* background-blend-mode: multiply; */
     color: var(--clr-light);
     text-align: center;
 }
@@ -308,7 +308,7 @@ header{
 }
 
 .section__title--services::after {
-    content: '';        /* This content:'' code is REQUIRED for pseudo elements, otherwise they don't appear */
+    content: '';
     display: block;
     width: 2em;
     height: 1px;
@@ -317,18 +317,14 @@ header{
     opacity: 0.25;
 }
 
-.services{
+.services {
     margin-bottom: 4em;
 }
-
-/*Below is developing a restriction of paragraph length, so that when there are in-between sized screens the text doesn't just keep expanding. */
 
 .service {
     max-width: 500px;
     margin: 0 auto;
 }
-
-/* Below is the development of the services breaking into columns when the site is expanded onto bigger screens, rather than just following oe after the other */
 
 @media (min-width: 800px) {
     .services {
@@ -337,13 +333,12 @@ header{
         margin-left: auto;
         margin-right: auto;
     }
-
-    /*element + element is a combinator that overlooks the 1st element, and takes note of the space between the 2nd and 3rd elements. Make no syntactical sense, but whatever. This is why they are front-end devs instead of back end or proper coders */
-
+    
     .service + .service {
         margin-left: 2em;
     }
 }
+
 
 .about-me {
     max-width: 1000px;
@@ -417,9 +412,10 @@ header{
 
 .portfolio__img:hover,
 .portfolio__item:focus .portfolio__img {
-    transform: scale(1.2);  /*Determines expansion of image*/
-    opacity: .5;            /* Determineshow much background colour comes through*/
+    transform: scale(1.2);
+    opacity: .5;
 }
+
 
 /* footer */
 
@@ -429,9 +425,9 @@ header{
     text-align: center;
     padding: 2.5em 0;
     font-size: var(--fs-h3);
+
 }
 
-/* This makes sure that any links in your footer have the color coming through */
 .footer a { 
     color: inherit;
     text-decoration: none;
@@ -450,7 +446,7 @@ header{
     text-decoration: underline;
 }
 
-.social-list{
+.social-list {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -459,24 +455,24 @@ header{
 }
 
 .social-list__item {
-    margin: 0 .25em;
+    margin: 0 .5em;
 }
 
-.social-list__link{
-    padding: .25em;
+.social-list__link {
+    padding: .5em;
 }
 
-/* Portfolio item styles */
 
-.portfolio-item-individual{
-    padding: 0em 2em 2em;
+/* Individual portfolio item styles */
+
+.portfolio-item-individual {
+    padding: 0 2em 2em;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-.portfolio-item-individual p{
+.portfolio-item-individual p {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
-
